@@ -1,0 +1,107 @@
+:root {
+  --fondo: #0f0b16;
+  --panel: #1a1424;
+  --panel2: #241b33;
+  --borde: #33284a;
+  --texto: #f1ecf8;
+  --gris: #a99bbf;
+  --morado: #8b5cf6;
+  --rosa: #ec4899;
+  --verde: #22c55e;
+  --rojo: #ef4444;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 24px;
+  border-bottom: 1px solid var(--borde);
+  background: var(--panel);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.marca { font-weight: 800; font-size: 20px; display: flex; align-items: center; gap: 10px; }
+.logo {
+  width: 34px; height: 34px; border-radius: 10px;
+  display: grid; place-items: center;
+  background: linear-gradient(135deg, var(--morado), var(--rosa));
+}
+.estado { font-size: 13px; color: var(--gris); }
+.estado.mal { color: var(--rojo); }
+
+main { display: grid; grid-template-columns: 260px 1fr; min-height: calc(100vh - 63px); }
+
+aside { border-right: 1px solid var(--borde); padding: 16px; background: var(--panel); }
+aside h3 { margin: 4px 0 12px; font-size: 14px; color: var(--gris); text-transform: uppercase; letter-spacing: .05em; }
+aside ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+aside li {
+  padding: 10px; border-radius: 10px; cursor: pointer; background: var(--panel2);
+  font-size: 13px; border: 1px solid transparent;
+}
+aside li:hover, aside li.activo { border-color: var(--morado); }
+aside li .url { color: var(--gris); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; margin-top: 3px; }
+
+.contenido { padding: 24px; display: flex; flex-direction: column; gap: 18px; max-width: 1400px; }
+
+.tarjeta { background: var(--panel); border: 1px solid var(--borde); border-radius: 14px; padding: 18px; }
+.tarjeta h2, .tarjeta h3 { margin: 0 0 12px; }
+
+input, textarea {
+  width: 100%; background: var(--panel2); color: var(--texto);
+  border: 1px solid var(--borde); border-radius: 10px; padding: 11px 12px; font: inherit; font-size: 14px;
+}
+input:focus, textarea:focus { outline: none; border-color: var(--morado); }
+#formulario { display: flex; flex-direction: column; gap: 10px; }
+
+button, .boton {
+  background: linear-gradient(135deg, var(--morado), var(--rosa));
+  color: white; border: 0; border-radius: 10px; padding: 11px 16px;
+  font-weight: 700; cursor: pointer; font-size: 14px; text-decoration: none; text-align: center;
+}
+button:disabled { opacity: .5; cursor: wait; }
+.secundario { background: var(--panel2); border: 1px solid var(--borde); font-weight: 600; }
+
+pre#logs {
+  background: #0a0710; border-radius: 10px; padding: 12px; margin: 0;
+  max-height: 260px; overflow: auto; font-size: 13px; line-height: 1.5; white-space: pre-wrap;
+}
+
+.fila-titulo { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.chip { font-size: 12px; padding: 4px 10px; border-radius: 99px; background: var(--panel2); border: 1px solid var(--borde); white-space: nowrap; }
+.chip.listo { border-color: var(--verde); color: var(--verde); }
+.chip.error { border-color: var(--rojo); color: var(--rojo); }
+.gris { color: var(--gris); }
+.oculto { display: none !important; }
+
+.grilla { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px; margin-top: 14px; }
+
+.clip { background: var(--panel); border: 1px solid var(--borde); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; }
+.clip video { width: 100%; aspect-ratio: 9 / 16; background: black; display: block; }
+.clip .cuerpo { padding: 14px; display: flex; flex-direction: column; gap: 8px; }
+.clip .titulo { font-weight: 700; padding: 8px 10px; }
+.clip .meta, .clip .razon { font-size: 12px; margin: 0; }
+.clip .descripcion { font-size: 13px; resize: vertical; }
+.botones { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.atajos { display: flex; flex-wrap: wrap; gap: 6px; }
+.atajos button { background: var(--panel2); border: 1px solid var(--borde); font-size: 12px; padding: 6px 9px; font-weight: 600; }
+.atajos button:hover { border-color: var(--morado); }
+.editar { display: flex; gap: 6px; }
+.editar input { font-size: 13px; }
+.clip.ocupado { opacity: .55; pointer-events: none; }
+
+@media (max-width: 800px) {
+  main { grid-template-columns: 1fr; }
+  aside { border-right: 0; border-bottom: 1px solid var(--borde); }
+}

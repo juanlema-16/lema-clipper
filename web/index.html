@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LemaClipper</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <header>
+    <div class="marca"><span class="logo">L</span> LemaClipper</div>
+    <div id="estado" class="estado"></div>
+  </header>
+
+  <main>
+    <aside>
+      <h3>Proyectos</h3>
+      <ul id="proyectos"></ul>
+    </aside>
+
+    <section class="contenido">
+      <form id="formulario" class="tarjeta">
+        <h2>Hacer clips</h2>
+        <input id="entrada" type="text" placeholder="Pega la URL (YouTube, Kick, Twitch...) o la ruta de un video de tu PC" required>
+        <input id="instrucciones" type="text" placeholder="Opcional: qué buscar (ej. solo momentos graciosos, secretos del mapa...)">
+        <button type="submit">✂️ Hacer clips</button>
+      </form>
+
+      <div id="panelTrabajo" class="tarjeta oculto">
+        <div class="fila-titulo">
+          <h3 id="tituloTrabajo">Trabajando...</h3>
+          <span id="estadoTrabajo" class="chip">trabajando</span>
+        </div>
+        <pre id="logs"></pre>
+      </div>
+
+      <div id="proyecto" class="oculto">
+        <div class="fila-titulo">
+          <h2 id="tituloProyecto"></h2>
+          <span id="infoProyecto" class="gris"></span>
+        </div>
+        <div id="clips" class="grilla"></div>
+      </div>
+
+      <div id="vacio" class="tarjeta gris">
+        Pega una URL arriba para empezar. Los clips aparecen aquí.
+      </div>
+    </section>
+  </main>
+
+  <template id="plantillaClip">
+    <article class="clip">
+      <video controls preload="metadata" playsinline></video>
+      <div class="cuerpo">
+        <div class="fila-titulo">
+          <input class="titulo" type="text">
+          <span class="chip puntaje"></span>
+        </div>
+        <div class="gris meta"></div>
+        <p class="razon gris"></p>
+        <textarea class="descripcion" rows="3"></textarea>
+        <div class="botones">
+          <button class="copiar secundario">📋 Copiar texto</button>
+          <a class="descargar boton secundario" download>⬇️ Descargar</a>
+        </div>
+        <div class="atajos">
+          <button data-cmd="quita los silencios">Quitar silencios</button>
+          <button data-cmd="usa recorte al centro para llenar la pantalla">Pantalla llena</button>
+          <button data-cmd="usa el modo con fondo borroso">Fondo borroso</button>
+          <button data-cmd="subtítulos en el centro">Subs al centro</button>
+          <button data-cmd="quita los subtítulos">Sin subs</button>
+          <button data-cmd="empieza 3 segundos antes">+3s al inicio</button>
+          <button data-cmd="deshacer" class="deshacer">↩️ Deshacer</button>
+        </div>
+        <form class="editar">
+          <input type="text" placeholder="Pídele un cambio a Claude: 'pon NO PUEDE SER en el segundo 4'">
+          <button type="submit">Aplicar</button>
+        </form>
+      </div>
+    </article>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>

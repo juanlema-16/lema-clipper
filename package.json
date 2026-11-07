@@ -1,0 +1,24 @@
+{
+  "name": "lema-clipper",
+  "version": "1.0.0",
+  "description": "Herramienta personal para hacer clips y editar videos con IA (Claude + Whisper + FFmpeg)",
+  "type": "module",
+  "main": "src/cli.js",
+  "scripts": {
+    "clip": "node src/cli.js clip",
+    "editar": "node src/cli.js editar",
+    "web": "node src/servidor.js",
+    "prueba": "node src/cli.js prueba"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "author": "Juan José Pérez Lema",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.6.0",
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0"
+  }
+}
